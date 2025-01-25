@@ -1,0 +1,56 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.form-group {
+    display: flex;
+    width: 580px;
+    margin: 10px;
+}
+
+.form-group label {
+    width: 180px;
+    text-align: right;
+}
+
+.form-group input {
+    height: 25px;
+    width: 300px;
+    margin-left: 10px;
+}
+
+.sub-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 580px;
+    margin: 10px;
+    border: 1px solid #ccc;
+}
+
+.sub-form input {
+    width: 180px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.image-upload {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.noimg {
+    width: 240px;
+    height: 240px;
+}
+
+button {
+    width: 150px;
+    height: 50px;
+
+}
