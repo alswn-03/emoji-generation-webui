@@ -79,7 +79,7 @@ function App() {
   
       // 1. Prepare payload1 : lora, controlnet able
 
-        const prompt1 = "emoji, ${prompt}, <lora:memoji:1>";
+        const prompt1 = `emoji, ${prompt}, <lora:memoji:1>`;
         const scale1 = 1;
         const controlNet1 = "True";
 
