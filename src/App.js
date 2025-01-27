@@ -79,7 +79,7 @@ function App() {
   
       // 1. Prepare payload1 : lora, controlnet able
 
-        const prompt1 = `${prompt}`; //`emoji, ${prompt}, <lora:memoji:1>`
+        const prompt1 = "emoji, ${prompt}, <lora:memoji:1>";
         const scale1 = 1;
         const controlNet1 = "True";
 
@@ -93,9 +93,9 @@ function App() {
           cfg_scale: 7.0,
 
           // upscaling
-          //width: width * scale1, 
-          //height: height * scale1,
-          resize_mode: -1,
+          width: width * scale1, 
+          height: height * scale1,
+          resize_mode: 0,
 
           // controlnet
           alwayson_scri: { "ControlNet": { "args": [
@@ -130,7 +130,7 @@ function App() {
   
           // 2. Prepare payload2 : lora, controlnet disable, upscaling
           const base64Image2 = response.data.images[0]; 
-          const prompt2 = `${prompt}`; //`emoji, ${prompt}`
+          const prompt2 = `emoji, ${prompt}`;
           const scale2 = 1.5;
           const controlNet2 = "False";
 
@@ -144,9 +144,9 @@ function App() {
             cfg_scale: 7.0,
 
             // upscaling
-            //width: width * scale2, 
-            //height: height * scale2,
-            //resize_mode: 0,
+            width: width * scale2, 
+            height: height * scale2,
+            resize_mode: 0,
 
             // controlnet
             alwayson_scri: { "ControlNet": { "args": [
