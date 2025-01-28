@@ -7,19 +7,26 @@ form {
 
 .form-group {
     display: flex;
-    width: 580px;
+    width: 620px;
     margin: 10px;
 }
 
+.category {
+    /* width: 25%; */
+    margin-top: 20px;
+    height: 20px;
+    transform: translateX(-270px);
+    font-weight: 700;
+}
+
 .form-group label {
-    width: 180px;
-    text-align: right;
+    width: 90px;
+    text-align: center;
 }
 
 .form-group input {
     height: 25px;
-    width: 300px;
-    margin-left: 10px;
+    width: 70px;
 }
 
 .sub-form {
@@ -36,6 +43,10 @@ form {
     width: 180px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.sub-form-title {
+    padding-top: 5px;
 }
 
 .image-upload {

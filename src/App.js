@@ -11,7 +11,9 @@ function App() {
   const [preview, setPreview] = useState(null);
   const [generatedImage1, setGeneratedImage1] = useState(null);
   const [generatedImage, setGeneratedImage] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const [progress, setProgress] = useState(0);                 
 
   var width = 1;    // 이미지 너비
   var height = 1;  // 이미지 높이
@@ -69,12 +71,13 @@ function App() {
       return;
     } 
     setLoading(true);
+    setProgress(0);  // progress 상태 초기화
 
     try {
       // Convert image file to Base64
       const reader = new FileReader();
       reader.onload = async () => {
-        const base64Image1 = reader.result.split(",")[1]; // base64Image
+        const base64Image1 = reader.result.split(",")[1]; 
 
   
       // 1. Prepare payload1 : lora, controlnet able
@@ -95,34 +98,50 @@ function App() {
           // upscaling
           width: width * scale1, 
           height: height * scale1,
-          resize_mode: -1,
+          resize_mode: 0,
+          //resize_mode: -1,
 
           // controlnet
-          alwayson_scri: { "ControlNet": { "args": [
-                     {
-                        "enabled": controlNet1,
-                        "guidance_end": 1,
-                        "guidance_start": 0,
-                        "model": "diffusers_xl_canny_full [2b69fca4]",
-                        "module": "canny",
-                        "pixel_perfect": "True",
-                        //"processor_res": 512,
-                        //"resize_mode": "Crop and Resize",
-                        "weight": 1
-                     }
-                 ]
-             }
+          alwayson_scripts: { 
+            "ControlNet": { 
+              "args": [
+                {
+                  "enabled": controlNet1,
+                  "guidance_end": 1,
+                  "guidance_start": 0,
+                  "model": "diffusers_xl_canny_full [2b69fca4]",
+                  "module": "canny",
+                  "pixel_perfect": "True",
+                  //"processor_res": 512,
+                  //"resize_mode": "Crop and Resize",
+                  "weight": 1
+                }
+              ]
+            }
           }
         };
         console.log("payload1")
         console.log(payload1);
 
-        try { // try 1
+        // progress 1
+        const interval1 = setInterval(async () => {
+          try {
+            const progressResponse = await axios.get("/sdapi/v1/progress");
+            setProgress(progressResponse.data.progress * 50); // 첫 번째 요청은 0% ~ 50%
+          } catch (error) {
+            console.error("Error fetching progress:", error);
+          }
+        }, 1000);
+
+
+        try { 
+          // post 1
           const response = await axios.post("/sdapi/v1/img2img", payload1, {
             headers: {
               "Content-Type": "application/json",
             },
           });
+          clearInterval(interval1); // 첫 번째 요청 완료 시 interval 종료
           setGeneratedImage1(response.data.images[0]);
 
           console.log("first generated image");
@@ -146,35 +165,49 @@ function App() {
             // upscaling
             width: width * scale2, 
             height: height * scale2,
-            resize_mode: -1,
+            resize_mode: 0,
+            //resize_mode: -1,
 
             // controlnet
-            alwayson_scri: { "ControlNet": { "args": [
-                      {
-                          "enabled": controlNet2,
-                          "guidance_end": 1,
-                          "guidance_start": 0,
-                          "model": "diffusers_xl_canny_full [2b69fca4]",
-                          "module": "canny",
-                          "pixel_perfect": "True",
-                          //"processor_res": 512,
-                          //"resize_mode": "Crop and Resize",
-                          "weight": 1
-                      }
-                  ]
+            alwayson_scripts: { 
+              "ControlNet": { 
+                "args": [
+                  {
+                    "enabled": controlNet2,
+                    "guidance_end": 1,
+                    "guidance_start": 0,
+                    "model": "diffusers_xl_canny_full [2b69fca4]",
+                    "module": "canny",
+                    "pixel_perfect": "True",
+                    //"processor_res": 512,
+                    //"resize_mode": "Crop and Resize",
+                    "weight": 1
+                  }
+                ]
               }
             }
           };
           console.log("payload2")
           console.log(payload2);
 
-          //try 2
+          // progress 2
+          const interval2 = setInterval(async () => {
+            try {
+              const progressResponse = await axios.get("/sdapi/v1/progress");
+              setProgress(50 + progressResponse.data.progress * 50); // 두 번째 요청은 50% ~ 100%
+            } catch (error) {
+              console.error("Error fetching progress:", error);
+            }
+          }, 1000);
+
+          // post 2
           const response2 = await axios.post("/sdapi/v1/img2img", payload2, {
             headers: {
               "Content-Type": "application/json",
             },
           });
   
+          clearInterval(interval2);
           setGeneratedImage(response2.data.images[0]);
           console.log("second generated image");
           console.log(response2.data);
@@ -188,20 +221,19 @@ function App() {
     console.error(error);
     alert("Failed to convert image to Base64. Check console for details.");
     } finally {
-    setLoading(false);
     }
   };
 
 
 
  
-  return (<div style={{ textAlign: "center", padding: "20px" }}>
+  return (<div style={{ textAlign: "center" }}>
     <h1>Stable Diffusion img2img</h1>
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label>
-          Gender : 
-          </label>
+
+      <div className="category"> Gender : </div>
+      <div className="form-group"> {/* gender */}
+        {/* <div className="category"> Gender : </div> */}
         
         <label>
           <input
@@ -222,10 +254,11 @@ function App() {
           female
         </label>
       </div>
-      <div className="form-group">
-        <label>
+      <div className="category"> Face : </div>
+      <div className="form-group "> {/* Face */}
+        {/* <div className="category">
           Face : 
-          </label>
+        </div> */}
         
         <label>
           <input
@@ -245,6 +278,51 @@ function App() {
           />
           crying
         </label>
+        <label>
+          <input
+            type="radio"
+            value={"Neutral face"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "Neutral face"}
+          />
+          neutral
+        </label>
+        <label>
+          <input
+            type="radio"
+            value={"Angry face"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "Angry face"}
+          />
+          angry
+        </label>
+        <label>
+          <input
+            type="radio"
+            value={"Laughing face"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "Laughing face"}
+          />
+          laughing
+        </label>
+        <label>
+          <input
+            type="radio"
+            value={"Sad face"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "Sad face"}
+          />
+          sad
+        </label>
+        <label>
+          <input
+            type="radio"
+            value={"Happy"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "Happy"}
+          />
+          happy
+        </label>
       </div>
 
       {/*<div className="form-group">
@@ -263,7 +341,7 @@ function App() {
       
       <div className="form-group image-upload">
         <div className="sub-form">
-          <div>Input Image</div>
+          <div className="sub-form-title">Input Image</div>
             {preview ? (
               <img 
                 src={preview}
@@ -281,8 +359,7 @@ function App() {
             />
         </div>
         <div className="sub-form">
-          <div>Generated Image</div>
-          {loading && <div>Loading...</div>}
+          <div className="sub-form-title" >Generated Image</div>
           {generatedImage && (
             <img
               src={`data:image/png;base64,${generatedImage}`}
@@ -292,7 +369,14 @@ function App() {
           )}
         </div>
       </div>
-      <button type="submit" disabled={loading}> GENERATE !</button>
+      <button type="submit"> GENERATE !</button>
+      {loading && (
+        <label style={{ marginTop: "20px", width: "300px" }}>
+          <div>Progress: {Math.round(progress)}%</div>
+          <progress value={progress} max="100" style={{ width: "100%" }} />
+        </label>
+      )}
+      
     </form>
 
   </div>
