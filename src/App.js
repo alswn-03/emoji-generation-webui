@@ -98,8 +98,8 @@ function App() {
           // upscaling
           width: width * scale1, 
           height: height * scale1,
-          resize_mode: 0,
-          //resize_mode: -1,
+          resize_mode: -1,
+          //resize_mode: 0,
 
           // controlnet
           alwayson_scripts: { 
@@ -165,8 +165,8 @@ function App() {
             // upscaling
             width: width * scale2, 
             height: height * scale2,
-            resize_mode: 0,
-            //resize_mode: -1,
+            resize_mode: -1,
+            //resize_mode: 0,
 
             // controlnet
             alwayson_scripts: { 
