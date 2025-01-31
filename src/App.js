@@ -38,11 +38,11 @@ function App() {
     const file = e.target.files[0];
       if (file) {
         console.log("file is here!!")
-        setImage(file); // setImage, File 타입
+
+        // setImage
+        setImage(file); 
 
         const reader = new FileReader();
-        console.log(reader);
-
         reader.onloadend = () => {
 
           // setWidth, setHeight
@@ -54,7 +54,9 @@ function App() {
             width = img.width;
             height = img.height;
           };
-          setPreview(reader.result); // setPreview
+
+          // setPreview
+          setPreview(reader.result); 
 
         };
         reader.readAsDataURL(file);
@@ -98,8 +100,8 @@ function App() {
           // upscaling
           width: width * scale1, 
           height: height * scale1,
-          resize_mode: -1,
           //resize_mode: 0,
+          resize_mode: 0,
 
           // controlnet
           alwayson_scripts: { 
@@ -163,10 +165,10 @@ function App() {
             cfg_scale: 7.0,
 
             // upscaling
-            width: width * scale2, 
-            height: height * scale2,
-            resize_mode: -1,
+            width: Math.round(width * scale2), 
+            height: Math.round(height * scale2),
             //resize_mode: 0,
+            resize_mode: 0,
 
             // controlnet
             alwayson_scripts: { 
@@ -194,7 +196,7 @@ function App() {
           const interval2 = setInterval(async () => {
             try {
               const progressResponse = await axios.get("/sdapi/v1/progress");
-              setProgress(50 + progressResponse.data.progress * 50); // 두 번째 요청은 50% ~ 100%
+              setProgress(progressResponse.data.progress * 50 + 50); // 두 번째 요청은 50% ~ 100%
             } catch (error) {
               console.error("Error fetching progress:", error);
             }
@@ -206,9 +208,10 @@ function App() {
               "Content-Type": "application/json",
             },
           });
-  
           clearInterval(interval2);
           setGeneratedImage(response2.data.images[0]);
+          setProgress(100);
+          
           console.log("second generated image");
           console.log(response2.data);
         } catch (error) {
@@ -345,7 +348,7 @@ function App() {
             {preview ? (
               <img 
                 src={preview}
-                alt=""
+                alt="Preview"
                 style={{ maxWidth: "100%", marginTop: "10px" }}
               />
             ) : (
@@ -357,6 +360,13 @@ function App() {
               onChange={handleImageChange}
               required
             />
+            {/* <input
+              type="file"
+              accept="image/*"
+              capture="environment"
+              onChange={handleImageChange}
+            /> */}
+
         </div>
         <div className="sub-form">
           <div className="sub-form-title" >Generated Image</div>
