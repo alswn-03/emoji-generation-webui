@@ -1,3 +1,35 @@
+# Introduction. MY MEMOJI
+나만의 emoji 를 만들어주는 memoji
+이미지 생성 모델 Stablediffusion을 파인튜닝하여 구현되었습니다.
+
+
+# How to use
+1. 웹사이트 사진 넣음
+   -> 이모지의 원하는 성별과 얼굴 표정 선택
+   -> 사진넣고
+   -> **Generate** 누르기
+   
+2. 페이로드에 들어가는 변수 및 설정값
+  - 업스케일링
+  - 스탭
+  - 컨트롤넷
+  - 등등
+    
+
+# Model
+(모델 설명이 들어갈 예정)
+
+
+
+
+
+
+
+
+
+
+
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
