@@ -15,31 +15,29 @@
    -  .safetensors 다운로드 <br>
       이모지 생성을 위해 튜닝한 모델의 checkpoint를 다운로드합니다. 가중치와 바이어스 수치가 저장되어 있으며 **.safetensors**가 확장자인 파일 뭉치로 구성되어 있습니다.
 
-   다운로드한 모델 파일(" .safetensors")은 Models > StableDiffusion 폴더에 위치해야합니다.
-   ```
-   └──...── Models/           
-   │        └── StableDiffusion/        
-   │            ├── Put Stable Diffusion checkpoints here.txt
-   |            ├── 모델 파일 (" .safetensors")
-   |            └── ...  
-   │
-   ```
+      다운로드한 모델 파일(" .safetensors")은 Models > StableDiffusion 폴더에 위치해야합니다.
+      ```
+      └──...── Models/           
+      │        └── StableDiffusion/        
+      │            ├── Put Stable Diffusion checkpoints here.txt
+      |            ├── 모델 파일 (" .safetensors")
+      |            └── ...  
+      │
+      ```
    - AUTOMATIC1111 WebUI를 실행한 다음, WebUI 화면에서 Stable Diffusion checkpoint를 " .safetensors" 로 선택합니다.
+
+
   
-##### 3. Runs the App
+##### 2. Runs the App
 
-   `npm start`
+      `npm start`
    
-##### 4. 웹사이트 사용 방법
-   <
-   이모지 생성을 원하는 사진을 넣습니다.
+##### 3. 웹사이트 사용 방법
    
-   -> 성별과 얼굴 표정 선택합니다.
-   
-   -> **Generate** 누릅니다.
+   이모지 생성을 원하는 사진을 넣습니다 <br> -> 성별과 얼굴 표정 선택합니다 <br> -> **Generate** 누릅니다.
 
    
-##### 6. 페이로드에 들어가는 변수 및 설정값
+##### 4. 페이로드에 들어가는 변수 및 설정값
   - 업스케일링
   - 스탭
   - 컨트롤넷
