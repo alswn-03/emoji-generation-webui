@@ -4,8 +4,8 @@
 
 
 
-### | How to use
-##### 1. stablediffusion 모델 다운로드 및 실행
+## | How to use
+### 1. stablediffusion 모델 다운로드 및 실행
 
 
    - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 설치 <br>
@@ -28,16 +28,16 @@
 
 
   
-##### 2. Runs the App
+### 2. Runs the App
 
       `npm start`
    
-##### 3. 웹사이트 사용 방법
+### 3. 웹사이트 사용 방법
    
    이모지 생성을 원하는 사진을 넣습니다 <br> -> 성별과 얼굴 표정 선택합니다 <br> -> **Generate** 누릅니다.
 
    
-##### 4. 페이로드에 들어가는 변수 및 설정값
+### 4. 페이로드에 들어가는 변수 및 설정값
   - 업스케일링
   - 스탭
   - 컨트롤넷
@@ -45,7 +45,7 @@
     
 
 
-### | Model
+## | Model
 (모델 설명이 들어갈 예정)
 
 
