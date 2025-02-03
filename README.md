@@ -9,7 +9,7 @@
 
 
    - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 설치 <br>
-      StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **memoji*의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
+      StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **memoji**의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
       따라서 먼저 위의 링크를 따라 AUTOMATIC1111을 설치한 후, 아래의 순서를 따라가시면 됩니다.
    
    -  .safetensors 다운로드 <br>
@@ -34,7 +34,7 @@
    
 ### 3. 웹사이트 사용 방법
    
-   이모지 생성을 원하는 사진을 넣습니다 <br> -> 성별과 얼굴 표정 선택합니다 <br> -> **Generate** 누릅니다.
+      이모지 생성을 원하는 사진을 넣습니다 <br> -> 성별과 얼굴 표정 선택합니다 <br> -> **Generate** 누릅니다.
 
    
 ### 4. 페이로드에 들어가는 변수 및 설정값
