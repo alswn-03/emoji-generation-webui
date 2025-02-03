@@ -8,7 +8,7 @@
 # | How to use <br>
 ### 1. stablediffusion 모델 다운로드 및 실행
    - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) <br>
-      위의 링크를 따라 AUTOMATIC1111 WebUI을 설치한 후, 아래의 순서를 따라가시면 됩니다.<br>
+      위 링크를 따라 AUTOMATIC1111 WebUI을 다운로드합니다.<br>
       AUTOMATIC1111 WebUI는 StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **memoji**의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
    
    -  .safetensors 다운로드 <br>
@@ -27,7 +27,7 @@
 <br>
 
 
-### 2. Runs the App
+### 2. Runs the App.js
       `npm start` 
    <br>   
       
@@ -36,14 +36,9 @@
    -> 성별과 얼굴 표정 선택합니다 <br> 
    -> **Generate** 누릅니다. 
    <br> 
-   
-### 4. 페이로드에 들어가는 변수 및 설정값
-  - 업스케일링
-  - 스탭
-  - 컨트롤넷
-  - 등등
-    <br>
-    <br>
+   <br> 
+
+
     
 # | Model
 (모델 설명이 들어갈 예정)
