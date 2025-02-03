@@ -7,9 +7,9 @@
 
 # | How to use <br>
 ### 1. stablediffusion 모델 다운로드 및 실행
-   - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 설치 <br>
-      StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **memoji**의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
-      따라서 먼저 위의 링크를 따라 AUTOMATIC1111을 설치한 후, 아래의 순서를 따라가시면 됩니다.
+   - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) <br>
+      위의 링크를 따라 AUTOMATIC1111 WebUI을 설치한 후, 아래의 순서를 따라가시면 됩니다.<br>
+      AUTOMATIC1111 WebUI는 StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **memoji**의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
    
    -  .safetensors 다운로드 <br>
       이모지 생성을 위해 튜닝한 모델의 checkpoint를 다운로드합니다. 가중치와 바이어스 수치가 저장되어 있으며 **.safetensors**가 확장자인 파일 뭉치로 구성되어 있습니다.
