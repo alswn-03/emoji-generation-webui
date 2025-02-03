@@ -6,6 +6,7 @@
 <br>
 
 # | How to use
+<br>
 ### 1. stablediffusion 모델 다운로드 및 실행
    - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 설치 <br>
       StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **memoji**의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
@@ -24,18 +25,18 @@
       │
       ```
    - AUTOMATIC1111 WebUI를 실행한 다음, WebUI 화면에서 Stable Diffusion checkpoint를 " .safetensors" 로 선택합니다.
+<br>
 
 
-  
 ### 2. Runs the App
       `npm start`
-   
+<br>   
 ### 3. 웹사이트 사용 방법
    이모지 생성을 원하는 사진을 넣습니다 <br> 
    -> 성별과 얼굴 표정 선택합니다 <br> 
    -> **Generate** 누릅니다.
 
-   
+<br>   
 ### 4. 페이로드에 들어가는 변수 및 설정값
   - 업스케일링
   - 스탭
@@ -43,7 +44,7 @@
   - 등등
     
 
-
+<br><br>
 # | Model
 (모델 설명이 들어갈 예정)
 
