@@ -2,9 +2,10 @@
 나만의 **emoji** 를 만들어주는 memoji <br>
 이미지 생성 모델 Stablediffusion을 파인튜닝하여 구현되었습니다.
 
+<br>
+<br>
 
-
-## | How to use
+# | How to use
 ### 1. stablediffusion 모델 다운로드 및 실행
    - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 설치 <br>
       StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **memoji**의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
@@ -43,7 +44,7 @@
     
 
 
-## | Model
+# | Model
 (모델 설명이 들어갈 예정)
 
 
