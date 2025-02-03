@@ -8,7 +8,7 @@
 ### | How to use
 1. stablediffusion 모델 다운로드 및 실행
    
-   이모지 생성을 위해 튜닝한 모델의 checkpoint를 다운로드합니다. 가중치와 바이어스 수치를 저장한 **.safetensors** 확장자의 파일 뭉치로 구성되어 있습니다.
+   이모지 생성을 위해 튜닝한 모델의 checkpoint를 다운로드합니다. 가중치와 바이어스 수치가 저장되어 있으며 **.safetensors**가 확장자인 파일 뭉치로 구성되어 있습니다.
 
    다운로드한 모델 파일(" .safetensors")은 Models > StableDiffusion 폴더에 위치해야합니다.
    ```
