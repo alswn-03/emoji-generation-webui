@@ -1,14 +1,19 @@
 # MY MEMOJI
-나만의 **emoji** 를 만들어주는 memoji
-
+나만의 **emoji** 를 만들어주는 memoji <br>
 이미지 생성 모델 Stablediffusion을 파인튜닝하여 구현되었습니다.
 
 
 
 ### | How to use
 ##### 1. stablediffusion 모델 다운로드 및 실행
+
+
+   - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 설치 <br>
+      StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **memoji*의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
+      따라서 먼저 위의 링크를 따라 AUTOMATIC1111을 설치한 후, 아래의 순서를 따라가시면 됩니다.
    
-   이모지 생성을 위해 튜닝한 모델의 checkpoint를 다운로드합니다. 가중치와 바이어스 수치가 저장되어 있으며 **.safetensors**가 확장자인 파일 뭉치로 구성되어 있습니다.
+   -  .safetensors 다운로드 <br>
+      이모지 생성을 위해 튜닝한 모델의 checkpoint를 다운로드합니다. 가중치와 바이어스 수치가 저장되어 있으며 **.safetensors**가 확장자인 파일 뭉치로 구성되어 있습니다.
 
    다운로드한 모델 파일(" .safetensors")은 Models > StableDiffusion 폴더에 위치해야합니다.
    ```
@@ -19,6 +24,7 @@
    |            └── ...  
    │
    ```
+   - AUTOMATIC1111 WebUI를 실행한 다음, WebUI 화면에서 Stable Diffusion checkpoint를 " .safetensors" 로 선택합니다.
   
 ##### 3. Runs the App
 
