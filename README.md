@@ -5,8 +5,7 @@
 <br>
 <br>
 
-# | How to use
-<br>
+# | How to use <br>
 ### 1. stablediffusion 모델 다운로드 및 실행
    - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) 설치 <br>
       StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **memoji**의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
