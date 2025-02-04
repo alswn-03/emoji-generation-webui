@@ -11,10 +11,17 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
 
 
 # | How to use <br>
-### 1. stablediffusion 모델 다운로드 및 실행
-   - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) <br>
-      위 링크를 따라 AUTOMATIC1111 WebUI을 다운로드합니다.<br>
-      AUTOMATIC1111 WebUI는 StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **MyMemoji**의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
+### 1. SD WebUI 실행
+**MyMemoji**의 UI는 automatic1111을 활용하여 작성되었습니다. 따라서, MyMemoji webUI를 실행하기 전에, automatic1111에서 적절한 환경설정을 해야합니다. <br>
+
+```
+git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui
+```
+**모델 다운로드**
+➡️ [Download model checkpoint here](https://drive.google.com/drive/folders/10c-bRDNM-EAHATRaCPTQ3ZGfspJUgASs)<br>
+- checkpoint for finetuned Samaritan SDXL : `./Lora/memoji-07.safetensors`<br>
+- checkpoint for additional ldm : `./Stable-diffusion/samaritan3dCartoon_v40SDXL.safetensors`<br>
+- checkpoint for ControlNet : [diffusers_xl_canny_full.safetensors](https://huggingface.co/lllyasviel/sd_control_collection/blob/main/diffusers_xl_canny_full.safetensors)
    
    -  .safetensors 다운로드 <br>
       이모지 생성을 위해 튜닝한 모델의 checkpoint를 다운로드합니다. 가중치와 바이어스 수치가 저장되어 있으며 **.safetensors**가 확장자인 파일 뭉치로 구성되어 있습니다.
@@ -31,7 +38,7 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
    - AUTOMATIC1111 WebUI를 실행한 다음, WebUI 화면에서 Stable Diffusion checkpoint를 " .safetensors" 로 선택합니다.<br>
 
 
-### 2. Runs the App.js
+### 2. MyMemoji WebUI 실행
       `npm start` 
    <br>
       
