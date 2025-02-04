@@ -66,8 +66,17 @@ call webui.bat
 ```
 
 ## MyMemoji WebUI 
-      `npm start` 
-   <br>
+**1. Clone the repo**<br>
+```
+git clone https://github.com/alswn-03/emoji-generation-webui
+```
+<br>
+
+**2. run MyMemoji WebUI**<br>
+```
+npm start
+```
+<br>
       
 ### 3. 웹사이트 사용 방법
    <img src='./assets/emoji-generation-webui.png' width=800><br><br>
