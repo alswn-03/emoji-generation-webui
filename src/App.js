@@ -15,8 +15,8 @@ function App() {
 
   const [progress, setProgress] = useState(0);                 
 
-  var width = 1;    // 이미지 너비
-  var height = 1;  // 이미지 높이
+  const [width, setWidth] = useState(1);    // 이미지 너비
+  const [height, setHeight] = useState(1);   // 이미지 높이
 
 
 
@@ -51,8 +51,8 @@ function App() {
           img.onload = () => {
             console.log("Image Width:", img.width);  
             console.log("Image Height:", img.height); 
-            width = img.width;
-            height = img.height;
+            setWidth(img.width);
+            setHeight(img.height);
           };
 
           // setPreview
@@ -85,8 +85,9 @@ function App() {
       // 1. Prepare payload1 : lora, controlnet able
 
         const prompt1 = `emoji, ${prompt}, <lora:memoji:1>`;
-        const scale1 = 1;
         const controlNet1 = "True";
+        const width1 = width;
+        const height1 = height;
 
         const payload1 = {
           seed: -1,
@@ -98,8 +99,8 @@ function App() {
           cfg_scale: 7.0,
 
           // upscaling
-          width: width * scale1, 
-          height: height * scale1,
+          width: width1, 
+          height: height1,
           //resize_mode: 0,
           resize_mode: 0,
 
@@ -152,8 +153,9 @@ function App() {
           // 2. Prepare payload2 : lora, controlnet disable, upscaling
           const base64Image2 = response.data.images[0]; 
           const prompt2 = `emoji, ${prompt}`;
-          const scale2 = 1.5;
           const controlNet2 = "False";
+          const width2 = Math.round(width * 1.5);
+          const height2 = Math.round(height * 1.5);
 
           const payload2 = {
             seed: -1,
@@ -165,8 +167,8 @@ function App() {
             cfg_scale: 7.0,
 
             // upscaling
-            width: Math.round(width * scale2), 
-            height: Math.round(height * scale2),
+            width: width2, 
+            height: height2,
             //resize_mode: 0,
             resize_mode: 0,
 
