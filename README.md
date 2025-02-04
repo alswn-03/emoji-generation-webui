@@ -99,7 +99,7 @@ npm start
 Vanilla Samaritan SDXL은 cartoon 화풍을 보여주긴 했지만, 원하는 emoji 화풍과는 거리가 있다고 판단하여<br>
 총 2748개의 preprocessed data를 사용해 LoRA finetuning을 진행하였습니다.<br><br>
 <img src='./assets/lora finetuning.jpg' width=700><br><br>
-🚨 **해당 단계에서, 원하는 스타일이 적용되긴 했지만, 원본 이미지 속 인물과 표정 및 자세가 일치하지 않는다는 문제점 발견을 발견했습니다.**<br><br>
+🚨 **원하는 스타일이 적용되긴 했지만, 원본 이미지 속 인물과 표정 및 자세가 일치하지 않는다는 문제점 발견을 발견했습니다.**<br><br>
 
 
 ### 3. 원본 이미지에 충실하기 (ControlNet w/ Canny Edge)<br>
