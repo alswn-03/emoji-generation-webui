@@ -12,7 +12,7 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
 
 # | Installation <br>
 ## SD WebUI
-**MyMemoji**의 UI는 automatic1111을 활용하여 작성되었습니다. 따라서, MyMemoji webUI를 실행하기 전에, automatic1111에서 적절한 환경설정이 필요합니다 <br>
+**MyMemoji**의 UI는 automatic1111을 활용하여 작성되었습니다. 따라서, MyMemoji webUI를 실행하기 전에, automatic1111에서 적절한 환경설정이 필요합니다. <br>
 
 **1. Clone the repo**<br>
 ```
