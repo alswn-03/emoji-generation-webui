@@ -77,19 +77,17 @@ git clone https://github.com/alswn-03/emoji-generation-webui
 npm start
 ```
 <br>
-      
-### 3. 웹사이트 사용 방법
-   <img src='./assets/emoji-generation-webui.png' width=800><br><br>
-   이모지 생성을 원하는 사진을 넣습니다 <br> 
-   -> 성별과 얼굴 표정 선택합니다 <br> 
-   -> **Generate** 를 누릅니다. 
-   <br><br>
+
+# | How to use MyMemoji WebUI <br>
+1️⃣ 이모지 생성을 원하는 사진을 업로드합니다. <br>
+2️⃣ Input 이미지에 맞게 Gender와 Face를 선택합니다.
+3️⃣ **Generate** 버튼을 누릅니다.
+✅ **Progress bar**가 100%가 될 때까지 기다리면 끝!!
+<img src='./assets/emoji-generation-webui.png' width=800><br><br>
+
     
-# | Model
+# | Model Description
 <img src='./assets/architecture.jpg' width=800><br>
-➡️ [Download model checkpoint here](https://drive.google.com/drive/folders/10c-bRDNM-EAHATRaCPTQ3ZGfspJUgASs)<br>
-- checkpoint for finetuned Samaritan SDXL : `./Lora/memoji-07.safetensors`<br>
-- checkpoint for additional ldm : `./Stable-diffusion/samaritan3dCartoon_v40SDXL.safetensors`<br><br>
 
 ### 1. base model : <br>
 - [Samaritan-3d-Cartoon-SDXL](https://huggingface.co/imagepipeline/Samaritan-3d-Cartoon-SDXL)
