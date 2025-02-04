@@ -93,19 +93,19 @@ npm start
 ### 1. base model : <br>
 [Samaritan-3d-Cartoon-SDXL](https://huggingface.co/imagepipeline/Samaritan-3d-Cartoon-SDXL)<br>
 최대한 프로젝트 목적에 맞는, cartoon 화풍을 가진 모델로 선정했습니다. <br><br>
-<img src='./assets/vanilla samaritan.jpg' width=500><br><br>
+<img src='./assets/vanilla samaritan.jpg' width=400><br><br>
   
 ### 2. 원하는 그림체 만들기 (LoRA finetuning)<br>
 Vanilla Samaritan SDXL은 cartoon 화풍을 보여주긴 했지만, 원하는 emoji 화풍과는 거리가 있다고 판단하여<br>
 총 2748개의 preprocessed data를 사용해 LoRA finetuning을 진행하였습니다.<br><br>
-<img src='./assets/lora finetuning.jpg' width=500><br><br>
+<img src='./assets/lora finetuning.jpg' width=700><br><br>
 🚨 **해당 단계에서, 원하는 스타일이 적용되긴 했지만, 원본 이미지 속 인물과 표정 및 자세가 일치하지 않는다는 문제점 발견을 발견했습니다.**<br><br>
 
 
 ### 3. 원본 이미지에 충실하기 (ControlNet w/ Canny Edge)<br>
 2에서 생긴 문제점을 해결하기 위해서 입력 이미지의  edge 정보를 활용하기로 결정하여 <br>
 Controlnet w/ canny edge를 활용하여 입력 이미지의 edge 정보를 반영하여 생성했습니다.<br><br>
-<img src='./assets/controlnet.jpg' width=500><br><br>
+<img src='./assets/controlnet.jpg' width=450><br><br>
 🚨 **원본 이미지 속 인물의 윤곽을 잘못 인식하여 생성 이미지에 unwanted artifacts가 나타나는 것을 발견할 수 있었습니다.** <br>
 (위 예시의 경우, 사진 속 인물의 쌍꺼풀과 애굣살까지 눈으로 인식해버림)<br><br>
 
@@ -117,7 +117,7 @@ Empirical한 이유로, 추가 ldm은 vanilla 모델을 사용하였습니다.<b
     - 3에서의 artifact를 덮어버림  
     - upscaling을 통한 이미지 해상도 향상<br><br>
     
-<img src='./assets/additional ldm.jpg' width=500><br><br>
+<img src='./assets/additional ldm.jpg' width=700><br><br>
 ✅ **원본 이미지의 윤곽을 반영하면서, 원하는 화풍이 적용된 이미지 생성 성공 !**  <br><br>
 
 
