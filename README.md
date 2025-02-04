@@ -1,4 +1,4 @@
-# 😀 MY MEMOJI
+# 😀 MY MEMOJI 😀
 # | Introduction <br>
 **My Memoji**는 **유저 사진을 input으로 그와 닮은 memoji를 생성해주는 서비스**입니다. <br>
 SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성능을 개선하였습니다. 더하여, React를 사용해 custom ui를 빌드하였습니다.<br>
