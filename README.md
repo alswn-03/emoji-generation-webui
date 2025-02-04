@@ -1,15 +1,14 @@
 # MY MEMOJI
-나만의 **emoji** 를 만들어주는 memoji <br>
-이미지 생성 모델 Stablediffusion을 파인튜닝하여 구현되었습니다.
 
-<br>
+**My Memoji**는 **유저 사진을 input으로 그와 닮은 memoji를 생성해주는 서비스**입니다. <br>
+SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성능을 개선하였습니다. 더하여, React를 사용해 custom ui를 빌드하였습니다.
 <br>
 
 # | How to use <br>
 ### 1. stablediffusion 모델 다운로드 및 실행
    - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) <br>
       위 링크를 따라 AUTOMATIC1111 WebUI을 다운로드합니다.<br>
-      AUTOMATIC1111 WebUI는 StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **memoji**의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
+      AUTOMATIC1111 WebUI는 StableDiffusion 이미지 생성에 쓰이는 WebUI 입니다. **MyMemoji**의 UI는 위의 github 링크의 UI에서 제공하는 api를 활용하여 작성되었습니다. <br>
    
    -  .safetensors 다운로드 <br>
       이모지 생성을 위해 튜닝한 모델의 checkpoint를 다운로드합니다. 가중치와 바이어스 수치가 저장되어 있으며 **.safetensors**가 확장자인 파일 뭉치로 구성되어 있습니다.
