@@ -20,26 +20,25 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui
 ```
 <br>
 
-**모델 다운로드**<br>
+**2. Download models**<br>
 ➡️ checkpoint for ControlNet : [diffusers_xl_canny_full.safetensors](https://huggingface.co/lllyasviel/sd_control_collection/blob/main/diffusers_xl_canny_full.safetensors)<br>
 
 ➡️ [Download our model checkpoints here](https://drive.google.com/drive/folders/10c-bRDNM-EAHATRaCPTQ3ZGfspJUgASs)<br>
 - checkpoint for finetuned Samaritan SDXL : `./Lora/memoji-07.safetensors`<br>
 - checkpoint for additional ldm : `./Stable-diffusion/samaritan3dCartoon_v40SDXL.safetensors`<br>
 
-   
-   -  .safetensors 다운로드 <br>
-      이모지 생성을 위해 튜닝한 모델의 checkpoint를 다운로드합니다. 가중치와 바이어스 수치가 저장되어 있으며 **.safetensors**가 확장자인 파일 뭉치로 구성되어 있습니다.
 
-      다운로드한 모델 파일(" .safetensors")은 Models > StableDiffusion 폴더에 위치해야합니다.
-      ```
-      └──...── Models/           
-      │        └── StableDiffusion/        
-      │            ├── Put Stable Diffusion checkpoints here.txt
-      |            ├── 모델 파일 (" .safetensors")
-      |            └── ...  
-      │
-      ```
+**3. Set up files**<br>
+다운로드한 모델 파일 위치를 다음과 같이 조정합니다.
+
+```
+└──...── models/           
+│        └── Stable-diffusion/        
+|            └── samaritan3dCartoon_v40SDXL.safetensors
+│        └── Lora/        
+|            └── memoji-07.safetensors
+
+```
    - AUTOMATIC1111 WebUI를 실행한 다음, WebUI 화면에서 Stable Diffusion checkpoint를 " .safetensors" 로 선택합니다.<br>
 
 
