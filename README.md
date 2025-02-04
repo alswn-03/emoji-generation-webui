@@ -112,13 +112,12 @@ Controlnet w/ canny edge를 활용하여 입력 이미지의 edge 정보를 반�
 
 ### 4. 더 부드러운 결과물 얻기<br>
 3에서 생긴 문제점을 해결하기 위해서, 독립적인 ldm을 추가로 사용하여 post-hoc img2img 성능을 개선하였습니다.<br>
-Empirical한 이유로, 추가 ldm은 vanilla 모델을 사용하였습니다<br>
+Empirical한 이유로, 추가 ldm은 vanilla 모델을 사용하였습니다.<br>
 - 추가 ldm의 역할 :  
     - 3에서의 artifact를 덮어버림  
-    - upscaling을 통한 이미지 해상도 향상<br><br>
-    
+    - upscaling을 통한 이미지 해상도 향상<br>
 <img src='./assets/additional ldm.jpg' width=500><br><br>
-- ✅ **원본 이미지의 윤곽을 반영하면서, 원하는 화풍이 적용된 이미지 생성 성공 !**  <br><br>
+✅ **원본 이미지의 윤곽을 반영하면서, 원하는 화풍이 적용된 이미지 생성 성공 !**  <br><br>
 
 
 
