@@ -50,7 +50,8 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
 
 1. **base model** : <br>
 - [Samaritan-3d-Cartoon-SDXL](https://huggingface.co/imagepipeline/Samaritan-3d-Cartoon-SDXL)
-- 최대한 프로젝트 목적에 맞는, cartoon 화풍을 가진 모델로 선정함<br><br>
+- 최대한 프로젝트 목적에 맞는, cartoon 화풍을 가진 모델로 선정함 <br>
+<img src='./assets/vanilla samaritan.jpg' width=500><br><br>
   
 2. **원하는 그림체 만들기** (LoRA finetuning)<br>
 - vanilla Samaritan SDXL은 cartoon 화풍을 보여주긴 했지만, 우리가 원하는 emoji 화풍과는 거리가 있었음
