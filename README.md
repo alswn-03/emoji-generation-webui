@@ -40,7 +40,7 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
 
     
 # | Model
-(모델 설명이 들어갈 예정)
+<img src='./assets/architecture.jpg' width=800>
 
 
 
