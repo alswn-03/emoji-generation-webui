@@ -91,7 +91,7 @@ npm start
 <img src='./assets/architecture.jpg' width=800><br>
 
 ### 1. base model : <br>
-[Samaritan-3d-Cartoon-SDXL](https://huggingface.co/imagepipeline/Samaritan-3d-Cartoon-SDXL)
+[Samaritan-3d-Cartoon-SDXL](https://huggingface.co/imagepipeline/Samaritan-3d-Cartoon-SDXL)<br>
 최대한 프로젝트 목적에 맞는, cartoon 화풍을 가진 모델로 선정했습니다. <br>
 <img src='./assets/vanilla samaritan.jpg' width=500><br><br>
   
