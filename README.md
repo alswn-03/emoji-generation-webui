@@ -47,7 +47,8 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
 # | Model
 <img src='./assets/architecture.jpg' width=800><br>
 ➡️ [Download model checkpoint here](https://drive.google.com/drive/folders/10c-bRDNM-EAHATRaCPTQ3ZGfspJUgASs)<br><br>
-
+- checkpoint for finetuned Samaritan SDXL : `./Lora/memoji-07.safetensors`
+- checkpoint for additional ldm : `./Stable-diffusion/samaritan3dCartoon_v40SDXL.safetensors`
 
 **1. base model** : <br>
 - [Samaritan-3d-Cartoon-SDXL](https://huggingface.co/imagepipeline/Samaritan-3d-Cartoon-SDXL)
