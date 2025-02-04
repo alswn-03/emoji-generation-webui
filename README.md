@@ -10,6 +10,7 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
 저희는 이러한 문제점을 바탕으로, 사진을 찍으면 나와 닮은 미모지를 자동으로 생성해주는 프로젝트를 진행해보기로 하였습니다.
 
 ### 👥 Members
+<img src='./assets/members.jpg' width=580><br><br>
 
 # | Installation <br>
 ### SD WebUI
