@@ -46,7 +46,7 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui
 ```
 <br>
 
-**4. set up api**<br>
+**4. Set up api**<br>
 `webui-user.bat`코드를 다음과 같이 수정합니다.
 ```
 @echo off
@@ -60,7 +60,7 @@ call webui.bat
 ```
 <br>
 
-**5. run SD WebUI**<br>
+**5. Run SD WebUI**<br>
 ```
 ./webui.sh --api
 ```
@@ -72,7 +72,7 @@ git clone https://github.com/alswn-03/emoji-generation-webui
 ```
 <br>
 
-**2. run MyMemoji WebUI**<br>
+**2. Run MyMemoji WebUI**<br>
 ```
 npm start
 ```
