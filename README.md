@@ -81,9 +81,9 @@ npm start
 
 # | How to use MyMemoji WebUI <br>
 1️⃣ 이모지 생성을 원하는 사진을 업로드합니다. <br>
-2️⃣ Input 이미지에 맞게 Gender와 Face를 선택합니다.
-3️⃣ **Generate** 버튼을 누릅니다.
-✅ **Progress bar**가 100%가 될 때까지 기다리면 끝!!
+2️⃣ Input 이미지에 맞게 Gender와 Face를 선택합니다.<br>
+3️⃣ **Generate** 버튼을 누릅니다.<br>
+✅ **Progress bar**가 100%가 될 때까지 기다리면 끝!!<br>
 <img src='./assets/emoji-generation-webui.png' width=800><br><br>
 
     
