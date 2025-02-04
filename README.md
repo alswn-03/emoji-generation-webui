@@ -32,12 +32,17 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui
 다운로드한 모델 파일 위치를 다음과 같이 조정합니다.
 
 ```
+└──...── extentions/
+│        └── sd-webui-controlnet/
+│           └── models/
+│              └── diffusers_xl_canny_full.safetensors
+│                            
 └──...── models/           
 │        └── Stable-diffusion/        
 |            └── samaritan3dCartoon_v40SDXL.safetensors
 │        └── Lora/        
 |            └── memoji-07.safetensors
-
+|
 ```
    - AUTOMATIC1111 WebUI를 실행한 다음, WebUI 화면에서 Stable Diffusion checkpoint를 " .safetensors" 로 선택합니다.<br>
 
