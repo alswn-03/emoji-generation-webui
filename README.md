@@ -27,22 +27,17 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
       |            └── ...  
       │
       ```
-   - AUTOMATIC1111 WebUI를 실행한 다음, WebUI 화면에서 Stable Diffusion checkpoint를 " .safetensors" 로 선택합니다.
-<br>
+   - AUTOMATIC1111 WebUI를 실행한 다음, WebUI 화면에서 Stable Diffusion checkpoint를 " .safetensors" 로 선택합니다.<br>
 
 
 ### 2. Runs the App.js
-      `npm start` 
-   <br>   
+      `npm start` <br>
       
 ### 3. 웹사이트 사용 방법
    이모지 생성을 원하는 사진을 넣습니다 <br> 
    -> 성별과 얼굴 표정 선택합니다 <br> 
    -> **Generate** 를 누릅니다. 
-   <br> 
-   <br> 
-
-
+   <br><br>
     
 # | Model
 <img src='./assets/architecture.jpg' width=800><br>
@@ -50,27 +45,27 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
 - checkpoint for finetuned Samaritan SDXL : `./Lora/memoji-07.safetensors`<br>
 - checkpoint for additional ldm : `./Stable-diffusion/samaritan3dCartoon_v40SDXL.safetensors`<br><br>
 
-**1. base model** : <br>
+### 1. base model : <br>
 - [Samaritan-3d-Cartoon-SDXL](https://huggingface.co/imagepipeline/Samaritan-3d-Cartoon-SDXL)
 - 최대한 프로젝트 목적에 맞는, cartoon 화풍을 가진 모델로 선정함 <br>
 <img src='./assets/vanilla samaritan.jpg' width=500><br><br>
   
-**2. 원하는 그림체 만들기** (LoRA finetuning)<br>
+### 2. 원하는 그림체 만들기 (LoRA finetuning)<br>
 - vanilla Samaritan SDXL은 cartoon 화풍을 보여주긴 했지만, 우리가 원하는 emoji 화풍과는 거리가 있었음
 - 총 2748개의 preprocessed data를 사용해 LoRA finetuning 진행<br>
 <img src='./assets/lora finetuning.jpg' width=500><br>
 - 🚨 원하는 스타일이 적용되긴 했지만, 원본 이미지 속 인물과 표정과 자세가 일치하지 않는다는 문제점 발견<br><br>
 
 
-**3. 원본 이미지에 충실하기** (ControlNet w/ Canny Edge)<br>
+### 3. 원본 이미지에 충실하기 (ControlNet w/ Canny Edge)<br>
 - 2에서 생긴 문제점을 해결하기 위해서 입력 이미지의  edge 정보를 활용하기로 결정함
 - Controlnet w/ canny edge를 활용하여 입력 이미지의 edge 정보를 반영한 생성<br>
 <img src='./assets/controlnet.jpg' width=500><br>
 - 🚨 원본 이미지 속 인물의 윤곽을 잘못 인식하여 생성 이미지에 unwanted artifacts가 나타남
     - 위 예시의 경우, 사진 속 인물의 쌍꺼풀과 애굣살까지 눈으로 인식해버림<br><br>
 
-   
-**4. 더 부드러운 결과물 얻기**<br>
+
+### 4. 더 부드러운 결과물 얻기<br>
 - 3에서 생긴 문제점을 해결하기 위해서, 독립적인 ldm을 추가로 사용함
 - 추가 ldm의 역할 :  
     - 3에서의 artifact를 덮어버림  
