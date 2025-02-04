@@ -1,8 +1,13 @@
-# MY MEMOJI
-
+# 😀 MY MEMOJI
+# | 프로젝트 소개 <br>
 **My Memoji**는 **유저 사진을 input으로 그와 닮은 memoji를 생성해주는 서비스**입니다. <br>
 SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성능을 개선하였습니다. 더하여, React를 사용해 custom ui를 빌드하였습니다.
-<br>
+<br><br>
+**🔥 Motivation 🔥**<br>
+미모지는 사용자가 자신을 닮은 맞춤형 캐릭터를 만들 수 있도록 도와주는 Apple의 앱입니다.
+하지만, 미모지를 만들 때 지정할 수 있는 스타일에 한계가 있기에 나와 닮게 만들기 힘들다는 문제점이 있습니다.<br>
+저희는 이러한 문제점을 바탕으로, 사진을 찍으면 나와 닮은 미모지를 자동으로 생성해주는 프로젝트를 진행해보기로 하였습니다.
+
 
 # | How to use <br>
 ### 1. stablediffusion 모델 다운로드 및 실행
@@ -40,13 +45,19 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
 
     
 # | Model
-<img src='./assets/architecture.jpg' width=800>
+<img src='./assets/architecture.jpg' width=800><br>
+✅ model checkpoint :
+
+1. base model : 
+[Samaritan-3d-Cartoon-SDXL](https://huggingface.co/imagepipeline/Samaritan-3d-Cartoon-SDXL)
+<br>
+
+2. 원하는 그림체 만들기 (LoRA finetuning)
 
 
+3. 원본 이미지에 충실하기 (ControlNet w/ Canny Edge)
 
-
-
-
+4. 더 부드러운 결과물 얻기
 
 
 
