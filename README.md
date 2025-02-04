@@ -46,7 +46,8 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
     
 # | Model
 <img src='./assets/architecture.jpg' width=800><br>
-✅ model checkpoint :
+➡️ [Download model checkpoint here](https://drive.google.com/drive/folders/10c-bRDNM-EAHATRaCPTQ3ZGfspJUgASs)<br><br>
+
 
 **1. base model** : <br>
 - [Samaritan-3d-Cartoon-SDXL](https://huggingface.co/imagepipeline/Samaritan-3d-Cartoon-SDXL)
