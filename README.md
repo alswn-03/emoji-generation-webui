@@ -38,7 +38,7 @@ SDXL을 finetuning하고, 독립적인 ldm을 사용하여 post-hoc img2img 성�
 ### 3. 웹사이트 사용 방법
    이모지 생성을 원하는 사진을 넣습니다 <br> 
    -> 성별과 얼굴 표정 선택합니다 <br> 
-   -> **Generate** 누릅니다. 
+   -> **Generate** 를 누릅니다. 
    <br> 
    <br> 
 
