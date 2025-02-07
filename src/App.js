@@ -3,124 +3,108 @@ import axios from "axios";
 import "./Main.css";
 
 function App() {
-  // 상태 훅을 사용하여 입력 값과 이미지 데이터를 관리합니다.
   const [prompt, setPrompt] = useState("");
   const [genderPrompt, setGenderPrompt] = useState(""); 
   const [facePrompt, setFacePrompt] = useState(""); 
-
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [generatedImage, setGeneratedImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);                 
+  const [isGenerating, setIsGenerating] = useState(false);
   const [width, setWidth] = useState(1);    // 이미지 너비
   const [height, setHeight] = useState(1);   // 이미지 높이
-  const [isGenerating, setIsGenerating] = useState(false); // 중복 제출 방지
+  const [email, setEmail] = useState("");
 
-  // 성별을 선택할 때 사용되는 핸들러
   const genderPromptHandler = (e) => {
     setGenderPrompt(e.target.value);
     setPrompt(e.target.value + ", " + facePrompt);
-    console.log("prompt : ", prompt);
   };
 
-  // 얼굴 표정을 선택할 때 사용되는 핸들러
   const facePromptHandler = (e) => {
     setFacePrompt(e.target.value);
     setPrompt(genderPrompt + ", " + e.target.value);
-    console.log("prompt : ", prompt);
+  };
+  // 이미지 업로드 시 호출되는 핸들러
+  const handleImageChange = (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
+    if (file) {
+    console.log("file is here!!");
+    setImage(file);
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        const img = new Image();
+        img.src = reader.result;
+        img.onload = () => {
+        // 리사이즈를 위한 canvas 생성
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // 리사이즈할 크기 설정
+        const targetWidth = 600;
+        const targetHeight = 800;
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+
+        // 원본 이미지를 canvas에 그리기
+        ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+
+        // 리사이즈된 이미지 데이터를 가져오기
+        const resizedImageData = canvas.toDataURL("image/jpeg");
+        
+        setPreview(resizedImageData); // 리사이즈된 이미지 미리보기 설정
+        // 새로운 리사이즈된 크기로 너비와 높이 설정
+        setWidth(targetWidth);
+        setHeight(targetHeight);
+        
+        // 필요에 따라 리사이즈된 이미지를 파일로 변환하기
+        canvas.toBlob((blob) => {
+            if (blob) {
+            setImage(new File([blob], file.name, { type: "image/jpeg" }));
+            }
+        }, "image/jpeg");
+        };
+    };
+    reader.readAsDataURL(file);
+    }
+};
+
+  const sendEmail = async (base64Image) => {
+    if (!email) return;
+
+    try {
+      console.log(email, base64Image)
+      await axios.post("http://127.0.0.1:3001/api/send-email", {
+        to: email,
+        subject: "Generated Memoji",
+        image: base64Image
+      });
+      alert("Image sent to " + email);
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send email.");
+    }
   };
 
-//   // 이미지 업로드 시 호출되는 핸들러
-//   const handleImageChange = (e) => {
-//     e.preventDefault();
-//     const file = e.target.files[0];
-//     if (file) {
-//       console.log("file is here!!");
-//       setImage(file);
-
-//       const reader = new FileReader();
-//       reader.onloadend = () => {
-//         const img = new Image();
-//         img.src = reader.result; 
-//         img.onload = () => {
-//           setWidth(img.width);   // 이미지의 너비 설정
-//           setHeight(img.height); // 이미지의 높이 설정
-//         };
-
-//         setPreview(reader.result); // 이미지 미리보기 설정
-//       };
-//       reader.readAsDataURL(file);
-//     }
-//   };
-
-  // 이미지 업로드 시 호출되는 핸들러
-    const handleImageChange = (e) => {
-        e.preventDefault();
-        const file = e.target.files[0];
-        if (file) {
-        console.log("file is here!!");
-        setImage(file);
-    
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            const img = new Image();
-            img.src = reader.result;
-            img.onload = () => {
-            // 리사이즈를 위한 canvas 생성
-            const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext("2d");
-    
-            // 리사이즈할 크기 설정
-            const targetWidth = 400;
-            const targetHeight = 600;
-            canvas.width = targetWidth;
-            canvas.height = targetHeight;
-    
-            // 원본 이미지를 canvas에 그리기
-            ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
-    
-            // 리사이즈된 이미지 데이터를 가져오기
-            const resizedImageData = canvas.toDataURL("image/jpeg");
-            
-            setPreview(resizedImageData); // 리사이즈된 이미지 미리보기 설정
-            // 새로운 리사이즈된 크기로 너비와 높이 설정
-            setWidth(targetWidth);
-            setHeight(targetHeight);
-            
-            // 필요에 따라 리사이즈된 이미지를 파일로 변환하기
-            canvas.toBlob((blob) => {
-                if (blob) {
-                setImage(new File([blob], file.name, { type: "image/jpeg" }));
-                }
-            }, "image/jpeg");
-            };
-        };
-        reader.readAsDataURL(file);
-        }
-    };
-
-  // 폼 제출 시 호출되는 핸들러
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!image || !prompt || isGenerating) {
       alert("Please upload an image and enter a prompt.");
       return;
     }
-
-    setIsGenerating(true); // 중복 제출 방지
+    setIsGenerating(true);
     setLoading(true);
-    setProgress(0); // 진행률 초기화
+    setProgress(0);
 
     const reader = new FileReader();
     reader.onload = async () => {
-      const base64Image1 = reader.result.split(",")[1]; 
-
-      const prompt1 = `emoji, ${prompt}, <lora:memoji:1>`;
+      const base64Image1 = reader.result.split(",")[1];  
+      const prompt1 = `emoji, ${prompt}, <lora:memoji:1>`;  
       const controlNet1 = "True";
       const width1 = width;
-      const height1 = height;
+      const height1 = height;  
 
       const payload1 = {
         seed: 2968506678,
@@ -128,7 +112,7 @@ function App() {
         prompt: prompt1,
         negative_prompt: "Pixelated design, distorted facial features, blurry rendering, overly detailed skin texture, animal-like characteristics, sharp or harsh expressions, low-quality resolution, unrecognizable face, unnatural colors, 3D effects",
         strength: 0.7,
-        steps: 60,
+        steps: 50,
         cfg_scale: 7.0,
         width: width1, 
         height: height1,
@@ -150,8 +134,10 @@ function App() {
           }
         }
       };
+      
 
       let interval1;
+
       try {
         // 첫 번째 진행률 추적
         interval1 = setInterval(async () => {
@@ -163,11 +149,11 @@ function App() {
           }
         }, 1000);
 
-        // 첫 번째 이미지 생성 요청
+
         const response1 = await axios.post("/sdapi/v1/img2img", payload1, {
           headers: { "Content-Type": "application/json" },
         });
-        clearInterval(interval1); // 진행률 추적 중지
+
         setGeneratedImage(response1.data.images[0]);
 
         // 두 번째 이미지 생성을 위한 데이터 준비
@@ -183,7 +169,7 @@ function App() {
           prompt: prompt2,
           negative_prompt: "Pixelated design, distorted facial features, blurry rendering, overly detailed skin texture, animal-like characteristics, sharp or harsh expressions, low-quality resolution, unrecognizable face, unnatural colors, 3D effects",
           strength: 0.7,
-          steps: 50,
+          steps: 60,
           cfg_scale: 7.0,
           width: width2, 
           height: height2,
@@ -224,18 +210,20 @@ function App() {
         clearInterval(interval2); // 진행률 추적 중지
         setGeneratedImage(response2.data.images[0]);
         setProgress(100);
+
+        sendEmail(response2.data.images[0]);
+        
       } catch (error) {
         console.error("Error during image generation:", error);
-        alert("Failed to generate image. Check console for details.");
+        alert("Failed to generate image.");
       } finally {
-        setIsGenerating(false); // 다음 제출 허용
+        setIsGenerating(false);
         setLoading(false);
       }
     };
     reader.readAsDataURL(image);
   };
 
-  // 렌더링
   return (
     <div style={{ textAlign: "center" }}>
       <h1>😀 My Memoji 😀</h1>
@@ -264,69 +252,81 @@ function App() {
 
         <div className="category"> Face : </div>
         <div className="form-group">
-          <label>
-            <input
-              type="radio"
-              value={"smiling face"}
-              onChange={facePromptHandler}
-              checked={facePrompt === "smiling face"}
-            />
-            smiling
-          </label>
-          <label>
-            <input
-              type="radio"
-              value={"crying face"}
-              onChange={facePromptHandler}
-              checked={facePrompt === "crying face"}
-            />
-            crying
-          </label>
-          <label>
-            <input
-              type="radio"
-              value={"Neutral face"}
-              onChange={facePromptHandler}
-              checked={facePrompt === "Neutral face"}
-            />
-            neutral
-          </label>
-          <label>
-            <input
-              type="radio"
-              value={"Angry face"}
-              onChange={facePromptHandler}
-              checked={facePrompt === "Angry face"}
-            />
-            angry
-          </label>
-          <label>
-            <input
-              type="radio"
-              value={"Laughing face"}
-              onChange={facePromptHandler}
-              checked={facePrompt === "Laughing face"}
-            />
-            laughing
-          </label>
-          <label>
-            <input
-              type="radio"
-              value={"Sad face"}
-              onChange={facePromptHandler}
-              checked={facePrompt === "Sad face"}
-            />
-            sad
-          </label>
-          <label>
-            <input
-              type="radio"
-              value={"Happy"}
-              onChange={facePromptHandler}
-              checked={facePrompt === "Happy"}
-            />
-            happy
-          </label>
+        <label>
+          <input
+            type="radio"
+            value={"smiling face"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "smiling face"}
+          />
+          smiling
+        </label>
+        <label>
+          <input
+            type="radio"
+            value={"crying face"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "crying face"}
+          />
+          crying
+        </label>
+        <label>
+          <input
+            type="radio"
+            value={"Neutral face"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "Neutral face"}
+          />
+          neutral
+        </label>
+        <label>
+          <input
+            type="radio"
+            value={"Angry face"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "Angry face"}
+          />
+          angry
+        </label>
+        <label>
+          <input
+            type="radio"
+            value={"Laughing face"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "Laughing face"}
+          />
+          laughing
+        </label>
+        <label>
+          <input
+            type="radio"
+            value={"Sad face"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "Sad face"}
+          />
+          sad
+        </label>
+        <label>
+          <input
+            type="radio"
+            value={"Happy"}
+            onChange={facePromptHandler}
+            checked={facePrompt === "Happy"}
+          />
+          happy
+        </label>
+          {/* 얼굴 관련 라디오 버튼 추가 */}
+        </div>
+
+        <div className="category"> Email (optional): </div>
+        <div className="form-group">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            style={{ width: "400px" }} // 인라인 스타일로 너비 조절
+          />
         </div>
 
         <div className="form-group image-upload">

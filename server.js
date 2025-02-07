@@ -25,7 +25,6 @@ app.post('/api/send-email', async (req, res) => {
         from: 'jdh251425142514@gmail.com',
         to: to,
         subject: subject,
-        text: '테스트',
         html: '<h1>Your Generated Image</h1><p>See attached image:</p>',
         attachments: [{
         filename: 'generated-image.png',
