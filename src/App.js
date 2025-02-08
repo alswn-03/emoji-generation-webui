@@ -149,7 +149,8 @@ function App() {
           }
         }, 1000);
 
-
+        clearInterval(interval1);
+        
         const response1 = await axios.post("/sdapi/v1/img2img", payload1, {
           headers: { "Content-Type": "application/json" },
         });
