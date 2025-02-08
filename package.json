@@ -1,5 +1,5 @@
 {
-  "proxy": "https://c3c03ecc6c4cef4184.gradio.live/",
+  "proxy": "http://127.0.0.1:7860",
   "name": "demo-client",
   "version": "0.1.0",
   "private": true,
