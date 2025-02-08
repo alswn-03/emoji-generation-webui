@@ -20,21 +20,6 @@ function App() {
   const [height, setHeight] = useState(1);   // 이미지 높이
 
   const [email, setEmail] = useState("");
-  
-
-{/* 
-  const genderPromptHandler = (e) => {
-    setGenderPrompt(e.target.value);
-    setPrompt(e.target.value + ", " + facePrompt);
-    console.log("prompt : ", prompt);
-  };
-
-  const facePromptHandler = (e) => {
-    setFacePrompt(e.target.value);
-    setPrompt(genderPrompt + ", " + e.target.value);
-    console.log("prompt : ", prompt);
-  };
-*/}
 
 
   // 성별 선택 핸들러
@@ -131,35 +116,7 @@ function App() {
         const width1 = width;
         const height1 = height;
 
-      let interval1;
-
-      try {
-        // 첫 번째 진행률 추적
-        interval1 = setInterval(async () => {
-          try {
-            const progressResponse = await axios.get("/sdapi/v1/progress");
-            setProgress(progressResponse.data.progress * 50);
-          } catch (error) {
-            console.error("Error fetching progress:", error);
-          }
-        }, 1000);
-
-        clearInterval(interval1);
-        
-        const response1 = await axios.post("/sdapi/v1/img2img", payload1, {
-          headers: { "Content-Type": "application/json" },
-        });
-
-        setGeneratedImage(response1.data.images[0]);
-
-        // 두 번째 이미지 생성을 위한 데이터 준비
-        const base64Image2 = response1.data.images[0]; 
-        const prompt2 = `emoji, ${prompt}`;
-        const controlNet2 = "False";
-        const width2 = Math.round(width * 1.5);
-        const height2 = Math.round(height * 1.5);
-
-        const payload2 = {
+        const payload1 = {
           seed: 2968506678,
           init_images: [base64Image1],
           prompt: prompt1,
@@ -306,8 +263,6 @@ function App() {
   };
 
 
-
- 
   return (<div style={{ textAlign: "center" }}>
     <h1>😀 My Memoji 😀</h1>
     <form onSubmit={handleSubmit}>
@@ -389,17 +344,8 @@ function App() {
           />
           sad
         </label>
-        {/*<label>
-          <input
-            type="radio"
-            value={"Happy"}
-            onChange={facePromptHandler}
-            checked={facePrompt === "Happy"}
-          />
-          happy
-        </label>*/}
         
-          {/* Glasses 버튼 (라디오 버튼 스타일) */}
+          {/* Glasses 버튼 */}
         <label style={{
           display: "flex",
           alignItems: "center",
@@ -427,7 +373,7 @@ function App() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
-          style={{ width: "400px" }} // 인라인 스타일로 너비 조절
+          style={{ width: "400px" }} 
         />
       </div>
       
